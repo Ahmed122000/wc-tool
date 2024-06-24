@@ -2,8 +2,20 @@
 #include <stdlib.h>
 #include<ctype.h>
 #include <string.h>
+#include <wchar.h>
+#include <locale.h>
 
 
+int countChars(FILE *fptr){
+    
+    int chars = 0; 
+    int c; 
+    while((c=fgetwc(fptr))!= WEOF){
+        chars++;
+    }
+
+    return chars;
+}
 int numWords(FILE *fptr){
     char tempString[100];
     int counter = 0;
@@ -63,6 +75,9 @@ int numBytes(FILE *fptr){
 }
 void main(int argc, char* argv[])
 {
+    setlocale(LC_ALL, "en_US.utf8");
+
+
     if(argc == 1){
         perror("use -h for help");
         exit(EXIT_FAILURE);
@@ -104,6 +119,10 @@ void main(int argc, char* argv[])
         printf("%d\t%s\n", words, argv[2]);
     }
     
+        if(strcmp(argv[1], "-m") == 0){
+        int chars = countChars(fptr);
+        printf("%d\t%s\n", chars, argv[2]);
+    }
 
     fclose(fptr);
     exit(EXIT_SUCCESS);
