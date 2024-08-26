@@ -1,21 +1,46 @@
-<H1>WC Tool</H1>
-This challenge is to build my own version of the Unix command line tool wc!
 
-The Unix command line tools are a great metaphor for good software engineering and they follow the Unix Philosophies of:
-- Writing simple parts connected by clean interfaces - each tool does just one thing and provides a simple CLI that handles text input from either files or file streams.
-- Design programs to be connected to other programs - each tool can be easily connected to other tools to create incredibly powerful compositions.
+# WC Tool
 
-the tool has the following structure
-> `ccwc [argument] [path_for_input_file]`
+This project is a custom implementation of the Unix command-line tool `wc`. The Unix command line tools are known for their simplicity and adherence to the Unix Philosophy:
+- **Modularity**: Each tool does one thing well and provides a simple CLI that handles text input from files or streams.
+- **Composability**: Tools can be easily connected to others, creating powerful combinations.
 
-The tool have different argument each argument has its own task:
-- `-c`: count number of the bytes in the input text file
-- `-l`: count number of lines in the input text file
-- `-w`: count number of words in the input text file 
-- `-m`: count number of characters in the input text file __based on the locale__
-- default (no argument): it apply the first 3 argument together (`-c`, `-l`, `-w`)
+## Features
 
-the tool also supports the **standard input**  
-> `cat input.txt | ccwc [argument]` 
+The tool supports the following functionalities:
 
-<h6>this task is the first challege provided by <a href=https://codingchallenges.fyi/>Coding Challenges</a></h6>
+- **File Input**: Specify a file to read or pipe input directly into the tool.
+- **Counting Options**:
+  - `-c`: Count the number of bytes in the input text file.
+  - `-l`: Count the number of lines in the input text file.
+  - `-w`: Count the number of words in the input text file.
+  - `-m`: Count the number of characters in the input text file (based on the locale).
+  - **Default**: If no argument is provided, the tool counts the number of bytes, lines, and words (`-c`, `-l`, `-w`).
+
+## Usage
+
+### Command Structure
+
+The tool can be invoked in the following ways:
+
+- **File Input**:
+  ```
+  ccwc [options] [path_for_input_file]
+  ```
+
+- **Standard Input**:
+  ```
+  cat input.txt | ccwc [options]
+  ```
+
+### Arguments
+
+- `-c`: Count the number of bytes in the input text file.
+- `-l`: Count the number of lines in the input text file.
+- `-w`: Count the number of words in the input text file.
+- `-m`: Count the number of characters in the input text file (based on the locale).
+- **Default**: Counts bytes, lines, and words (`-c`, `-l`, `-w`).
+
+## Acknowledgments
+
+This application was inspired by a challenge provided by [Coding Challenges](https://codingchallenges.fyi/).
